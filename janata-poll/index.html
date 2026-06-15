@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#0D0D1A"/>
+<link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Janata Ki Raay%22,%22short_name%22:%22Poll%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%230D0D1A%22,%22theme_color%22:%22%23FF6B00%22,%22scope%22:%22/%22}"/>
+<title>जनता की राय — People's Poll</title>
+<meta property="og:title" content="जनता की राय — People's Poll"/>
+<meta property="og:description" content="BJP vs Congress vs CJP — Vote & share your opinion!"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- 🎯 NATIVE BANNER AD SCRIPT -->
+<script async="async" data-cfasync="false" src="https://pl29742350.effectivecpmnetwork.com/db85e449174db17e8179c1224e191e8b/invoke.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bjp:#FF6B00;--cjp:#1B5E20;--congress:#1A237E;
+  --wa:#25D366;--wa-dark:#128C4E;
+  --fb:#1877F2;--tw:#1DA1F2;--tg:#229ED9;--insta:#E1306C;
+  --gold:#F5C518;
+  --bg:#0D0D1A;--bg2:#161628;--bg3:#1E1E35;
+  --text:#FFF;--text2:rgba(255,255,255,0.7);--text3:rgba(255,255,255,0.4);
+  --border:rgba(255,255,255,0.1);
+  --radius:16px;--radius-sm:10px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Poppins','Noto Sans Devanagari',sans-serif;min-height:100vh;overflow-x:hidden;padding-top:max(0px,env(safe-area-inset-top));padding-bottom:max(0px,env(safe-area-inset-bottom))}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 80% 50% at 20% 20%,rgba(255,107,0,0.12) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 40% at 80% 80%,rgba(26,35,126,0.18) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 50% at 50% 50%,rgba(27,94,32,0.1) 0%,transparent 70%);
+  pointer-events:none;z-index:0}
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.stars span{position:absolute;width:2px;height:2px;border-radius:50%;background:white;animation:twinkle var(--dur,3s) ease-in-out infinite;opacity:var(--op,0.5)}
+@keyframes twinkle{0%,100%{opacity:var(--op,0.5);transform:scale(1)}50%{opacity:0.1;transform:scale(0.5)}}
+.page{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:24px 16px 56px}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:24px;padding-top:8px}
+.header .badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#FFA500);color:#1a0a00;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:12px}
+.header h1{font-size:clamp(22px,6vw,30px);font-weight:800;line-height:1.2;margin-bottom:8px;background:linear-gradient(135deg,#fff 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header p{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* INSTA STRIP */
+.insta-strip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:99px;padding:8px 14px;margin-bottom:20px;font-size:12px;color:var(--text2);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.insta-strip::-webkit-scrollbar{display:none}
+.insta-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.insta-sep{color:var(--text3);flex-shrink:0}
+
+/* SECTION LABEL */
+.section-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;padding-left:2px}
+
+/* MY POINTS */
+.my-points-card{background:linear-gradient(135deg,rgba(245,197,24,0.12) 0%,transparent 100%);border:1px solid rgba(245,197,24,0.2);border-radius:var(--radius-sm);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;font-size:14px}
+.my-points-label{color:var(--text2)}
+.my-points-value{font-size:22px;font-weight:800;color:var(--gold);display:flex;align-items:center;gap:6px}
+
+/* PARTY CARDS */
+.parties-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.party-card{background:var(--bg2);border:2px solid var(--border);border-radius:var(--radius);padding:14px 8px;text-align:center;cursor:pointer;transition:all .25s ease;position:relative;overflow:hidden;user-select:none;-webkit-tap-highlight-color:transparent}
+.party-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s}
+.party-card.bjp::before{background:radial-gradient(circle at 50% 0%,rgba(255,107,0,0.25),transparent 70%)}
+.party-card.cjp::before{background:radial-gradient(circle at 50% 0%,rgba(27,94,32,0.3),transparent 70%)}
+.party-card.congress::before{background:radial-gradient(circle at 50% 0%,rgba(26,35,126,0.3),transparent 70%)}
+.party-card:hover::before,.party-card.selected::before{opacity:1}
+.party-card:hover{transform:translateY(-3px)}
+.party-card.selected{transform:translateY(-4px)}
+.party-card.bjp.selected{border-color:var(--bjp);box-shadow:0 8px 32px rgba(255,107,0,0.35)}
+.party-card.cjp.selected{border-color:var(--cjp);box-shadow:0 8px 32px rgba(27,94,32,0.4)}
+.party-card.congress.selected{border-color:var(--congress);box-shadow:0 8px 32px rgba(26,35,126,0.45)}
+.party-logo-wrap{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.party-logo-wrap svg{width:100%;height:100%;display:block}
+.party-name-tag{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;position:relative;z-index:1}
+.party-followers{font-size:10px;color:var(--text3);margin-bottom:8px;position:relative;z-index:1}
+.party-vote-count{font-size:11px;color:var(--text2);margin-bottom:6px;position:relative;z-index:1}
+.mini-bar-wrap{background:rgba(255,255,255,0.08);border-radius:99px;height:4px;overflow:hidden;position:relative;z-index:1}
+.mini-bar{height:100%;border-radius:99px;width:0%;transition:width .5s ease}
+.selected-tick{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:12px;z-index:2}
+.party-card.bjp.selected .selected-tick{display:flex;background:var(--bjp)}
+.party-card.cjp.selected .selected-tick{display:flex;background:var(--cjp)}
+.party-card.congress.selected .selected-tick{display:flex;background:var(--congress)}
+
+/* FORM */
+.form-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.form-card label{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:10px}
+.opinion-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Poppins','Noto Sans Devanagari',sans-serif;font-size:14px;padding:12px 14px;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.opinion-input:focus{border-color:rgba(255,255,255,0.3)}
+.opinion-input::placeholder{color:var(--text3)}
+.rating-label{margin-top:14px !important}
+.stars-row{display:flex;gap:8px}
+.star-btn{background:var(--bg3);border:1px solid var(--border);border-radius:8px;width:42px;height:42px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;color:var(--text3)}
+.star-btn:hover{transform:scale(1.1);border-color:var(--gold)}
+.star-btn.lit{background:rgba(245,197,24,0.15);border-color:var(--gold)}
+
+/* VOTE BTN */
+.actions-row{display:flex;gap:10px;margin-bottom:14px}
+.btn-vote{flex:1;padding:15px 12px;border-radius:var(--radius-sm);border:none;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#FF6B00,#FF9500);color:white;transition:all .2s;letter-spacing:.02em}
+.btn-vote:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,107,0,0.4)}
+.btn-vote:active{transform:scale(0.97)}
+.btn-vote.voted{background:linear-gradient(135deg,#2d2d2d,#444);cursor:not-allowed}
+
+/* POINTS BANNER */
+.points-banner{background:linear-gradient(135deg,rgba(245,197,24,0.15),rgba(245,197,24,0.05));border:1px solid rgba(245,197,24,0.3);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:14px;display:none;align-items:center;gap:10px;font-size:14px;color:var(--gold);font-weight:500}
+.points-banner.show{display:flex}
+.points-badge{background:var(--gold);color:#1a0a00;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;flex-shrink:0}
+
+/* ===================== SHARE PANEL ===================== */
+.share-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px 16px;margin-bottom:14px}
+.share-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.share-title svg{flex-shrink:0}
+.share-subtitle{font-size:12px;color:var(--text3);margin-bottom:14px}
+
+/* LINK BOX */
+.link-box{display:flex;gap:8px;margin-bottom:14px}
+.link-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:12px;padding:10px 12px;outline:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:text;font-family:'Poppins',sans-serif;min-width:0}
+.btn-copy{padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:6px}
+.btn-copy:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3)}
+.btn-copy.copied{background:rgba(27,94,32,0.3);border-color:#4CAF50;color:#4CAF50}
+
+/* SOCIAL BUTTONS GRID */
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.social-grid.four{grid-template-columns:repeat(2,1fr)}
+.btn-social{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius-sm);border:none;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;color:white;transition:all .2s;text-align:left;line-height:1.2}
+.btn-social:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn-social:active{transform:scale(0.97)}
+.btn-social .s-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn-social .s-label{display:flex;flex-direction:column}
+.btn-social .s-label span:first-child{font-size:13px;font-weight:700}
+.btn-social .s-label span:last-child{font-size:10px;opacity:.75;font-weight:400}
+
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C4E)}
+.btn-wa:hover{box-shadow:0 6px 20px rgba(37,211,102,0.4)}
+.btn-fb{background:linear-gradient(135deg,#1877F2,#0d5abf)}
+.btn-fb:hover{box-shadow:0 6px 20px rgba(24,119,242,0.4)}
+.btn-tw{background:linear-gradient(135deg,#000,#222)}
+.btn-tw:hover{box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.btn-tg{background:linear-gradient(135deg,#229ED9,#1578a8)}
+.btn-tg:hover{box-shadow:0 6px 20px rgba(34,158,217,0.4)}
+.btn-native{background:linear-gradient(135deg,#7c3aed,#5b21b6);grid-column:1/-1}
+.btn-native:hover{box-shadow:0 6px 20px rgba(124,58,237,0.4)}
+
+/* DIVIDER ROW */
+.or-row{display:flex;align-items:center;gap:10px;margin:12px 0}
+.or-row::before,.or-row::after{content:'';flex:1;height:1px;background:var(--border)}
+.or-row span{font-size:11px;color:var(--text3);white-space:nowrap}
+
+/* RESULTS */
+.results-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.result-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.result-row:last-child{margin-bottom:0}
+.result-party-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.result-party-name{font-size:13px;font-weight:600;min-width:68px;color:var(--text)}
+.result-track{flex:1;background:rgba(255,255,255,0.07);border-radius:99px;height:10px;overflow:hidden}
+.result-fill{height:100%;border-radius:99px;width:0%;transition:width .6s cubic-bezier(.25,.46,.45,.94)}
+.result-pct{font-size:13px;font-weight:700;min-width:38px;text-align:right;color:var(--text2)}
+
+.footer-stats{display:flex;justify-content:center;gap:20px;font-size:13px;color:var(--text3);margin-bottom:16px}
+.footer-stats strong{color:var(--text2)}
+.divider{border:none;border-top:1px solid var(--border);margin:18px 0}
+.watermark{text-align:center;font-size:11px;color:var(--text3);padding-top:8px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:rgba(20,20,40,0.97);color:white;padding:12px 22px;border-radius:99px;font-size:14px;font-weight:500;border:1px solid rgba(255,255,255,0.15);opacity:0;transition:all .3s ease;pointer-events:none;z-index:9999;white-space:nowrap;max-width:90vw;text-align:center;backdrop-filter:blur(10px)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff4444;animation:pulse 1.5s ease-in-out infinite;margin-right:5px}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media(max-width:768px){
+  body{font-size:16px}
+  .page{padding:12px 12px 60px;max-width:100%}
+  
+  /* AD CONTAINER - Mobile Optimized */
+  #container-db85e449174db17e8179c1224e191e8b{min-height:50px !important}
+  
+  /* HEADER */
+  .header{margin-bottom:16px;padding-top:4px}
+  .header h1{font-size:clamp(18px,5vw,24px)}
+  .header p{font-size:12px}
+  
+  /* PARTY CARDS */
+  .parties-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px}
+  .party-card{padding:12px 8px;border-radius:12px}
+  .party-logo-wrap{width:48px;height:48px;margin:0 auto 8px}
+  .party-name-tag{font-size:12px;margin-bottom:3px}
+  .party-followers{font-size:9px;margin-bottom:6px}
+  
+  /* FORM */
+  .form-card{padding:12px;margin-bottom:10px}
+  .opinion-input{min-height:70px;font-size:16px;padding:10px 12px}
+  .stars-row{gap:6px}
+  .star-btn{width:38px;height:38px;font-size:18px}
+  
+  /* BUTTONS */
+  .btn-vote{padding:14px;font-size:14px;border-radius:10px}
+  .btn-social{padding:11px 12px;font-size:12px;gap:8px}
+  .btn-social .s-icon{width:32px;height:32px}
+  .btn-social .s-label span:first-child{font-size:12px}
+  .btn-social .s-label span:last-child{font-size:9px}
+  
+  /* SOCIAL GRID */
+  .social-grid{gap:6px}
+  .social-grid.four{grid-template-columns:1fr 1fr}
+  
+  /* SHARE BUTTONS */
+  .link-box{gap:6px;margin-bottom:10px}
+  .link-input{font-size:11px;padding:9px 10px}
+  .btn-copy{padding:9px 12px;font-size:11px}
+  
+  /* RESULTS */
+  .results-card{padding:12px;margin-bottom:10px}
+  .result-party-name{min-width:50px;font-size:12px}
+  .result-pct{font-size:12px;min-width:32px}
+  
+  /* TOAST */
+  .toast{bottom:16px;font-size:13px;padding:11px 16px}
+}
+
+@media(max-width:480px){
+  .page{padding:10px 10px 50px}
+  
+  /* HEADER */
+  .header{margin-bottom:12px}
+  .header .badge{font-size:10px;padding:3px 10px;margin-bottom:8px}
+  .header h1{font-size:clamp(16px,4vw,20px);margin-bottom:6px}
+  .header p{font-size:11px;line-height:1.4}
+  
+  /* AD - Full width on mobile */
+  #container-db85e449174db17e8179c1224e191e8b{min-height:60px;width:100vw;margin-left:calc(-50vw + 50%)}
+  
+  /* PARTY GRID - Single column better for mobile */
+  .parties-grid{grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+  .party-card{padding:10px 6px;border-radius:10px}
+  .party-logo-wrap{width:44px;height:44px;margin:0 auto 6px}
+  .party-name-tag{font-size:11px}
+  .party-followers{font-size:8px}
+  .party-vote-count{font-size:10px}
+  
+  /* FORM CARD */
+  .form-card{padding:10px;margin-bottom:8px;border-radius:10px}
+  .form-card label{font-size:11px;margin-bottom:8px}
+  .opinion-input{min-height:60px;font-size:15px;padding:10px;border-radius:8px}
+  .stars-row{gap:5px}
+  .star-btn{width:35px;height:35px;font-size:16px;border-radius:6px}
+  
+  /* ACTION BUTTONS */
+  .actions-row{gap:8px;margin-bottom:10px}
+  .btn-vote{padding:13px;font-size:13px;border-radius:10px;-webkit-tap-highlight-color:transparent}
+  
+  /* POINTS BANNER */
+  .points-banner{padding:10px 12px;margin-bottom:10px;font-size:13px;border-radius:8px}
+  
+  /* SHARE SECTION */
+  .share-section{padding:12px;margin-bottom:10px;border-radius:10px}
+  .share-title{font-size:13px;margin-bottom:3px}
+  .share-subtitle{font-size:11px;margin-bottom:10px}
+  
+  /* LINK BOX */
+  .link-box{gap:5px;margin-bottom:10px}
+  .link-input{font-size:10px;padding:8px 10px;border-radius:8px}
+  .btn-copy{padding:8px 10px;font-size:10px;border-radius:8px}
+  
+  /* OR ROW */
+  .or-row{margin:10px 0;font-size:10px}
+  
+  /* SOCIAL GRID */
+  .social-grid{gap:5px}
+  .btn-social{padding:10px 10px;font-size:11px;gap:6px;border-radius:8px}
+  .btn-social .s-icon{width:28px;height:28px}
+  .btn-social .s-label{gap:0}
+  .btn-social .s-label span:first-child{font-size:11px}
+  .btn-social .s-label span:last-child{font-size:8px}
+  
+  /* RESULTS */
+  .results-card{padding:10px;margin-bottom:8px;border-radius:10px}
+  .result-row{gap:8px;margin-bottom:10px}
+  .result-party-name{min-width:45px;font-size:11px}
+  .result-pct{font-size:11px;min-width:28px}
+  
+  /* DIVIDER */
+  .divider{margin:12px 0}
+  
+  /* FOOTER STATS */
+  .footer-stats{gap:15px;font-size:11px;margin-bottom:12px}
+  
+  /* TOAST */
+  .toast{bottom:12px;font-size:12px;padding:10px 14px;max-width:85vw;border-radius:6px}
+  
+  /* Remove scroll on input focus to prevent iOS zoom */
+  input, textarea, select{font-size:16px}
+}
+
+@media(max-width:360px){
+  .parties-grid{gap:5px}
+  .party-card{padding:8px 4px}
+  .party-logo-wrap{width:40px;height:40px;margin:0 auto 4px}
+  .social-grid.four{grid-template-columns:1fr}
+  .btn-native{grid-column:1}
+  .page{padding:8px 8px 45px}
+}
+</style>
+</head>
+<body>
+<!-- 🎯 NATIVE BANNER AD CONTAINER -->
+<div id="container-db85e449174db17e8179c1224e191e8b" style="width:100%;min-height:90px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+
+<div class="stars" id="stars-bg"></div>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">📊 Instagram Social Poll</div>
+    <h1>जनता की राय<br/>People's Poll</h1>
+    <p>अपनी पार्टी को वोट दें और शेयर करें<br/>Vote for your party &amp; share your opinion</p>
+  </div>
+
+  <!-- INSTA STRIP -->
+  <div class="insta-strip">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><rect width="24" height="24" rx="6" fill="url(#ig)"/><defs><linearGradient id="ig" x1="0" y1="24" x2="24" y2="0"><stop stop-color="#f09433"/><stop offset=".25" stop-color="#e6683c"/><stop offset=".5" stop-color="#dc2743"/><stop offset=".75" stop-color="#cc2366"/><stop offset="1" stop-color="#bc1888"/></linearGradient></defs><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="white"/><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5" fill="none"/></svg>
+    Instagram Followers:
+    <span class="insta-dot" style="background:var(--bjp)"></span><strong>BJP 8.8M</strong>
+    <span class="insta-sep">|</span>
+    <span class="insta-dot" style="background:var(--cjp)"></span><strong>CJP 14.9M</strong>
+    <span class="insta-sep">|</span>
+    <span class="insta-dot" style="background:#3F51B5"></span><strong>Congress 13.3M</strong>
+  </div>
+
+  <!-- MY POINTS -->
+  <div class="my-points-card">
+    <div class="my-points-label">⭐ Your Points</div>
+    <div class="my-points-value"><span id="my-points">0</span> pts</div>
+  </div>
+
+  <!-- PARTY CARDS -->
+  <div class="section-label">Select your party — अपनी पार्टी चुनें</div>
+  <div class="parties-grid">
+    <div class="party-card bjp" id="card-bjp" onclick="selectParty('bjp')">
+      <div class="selected-tick">✓</div>
+      <div class="party-logo-wrap">
+        <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#FF6B00"/><ellipse cx="28" cy="36" rx="12" ry="5" fill="#1B5E20"/><ellipse cx="28" cy="24" rx="10" ry="13" fill="white"/><circle cx="28" cy="22" r="5" fill="#FF6B00" opacity=".9"/><line x1="21" y1="30" x2="28" y2="16" stroke="#FF6B00" stroke-width="2"/><line x1="35" y1="30" x2="28" y2="16" stroke="#FF6B00" stroke-width="2"/></svg>
+      </div>
+      <div class="party-name-tag">BJP</div>
+      <div class="party-followers">8.8M followers</div>
+      <div class="party-vote-count" id="votes-bjp">0 votes</div>
+      <div class="mini-bar-wrap"><div class="mini-bar" id="bar-bjp" style="background:var(--bjp)"></div></div>
+    </div>
+    <div class="party-card cjp" id="card-cjp" onclick="selectParty('cjp')">
+      <div class="selected-tick">✓</div>
+      <div class="party-logo-wrap">
+        <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#1B5E20"/><ellipse cx="28" cy="36" rx="14" ry="6" fill="#0A3D0F"/><ellipse cx="28" cy="25" rx="11" ry="9" fill="#A1887F"/><ellipse cx="24" cy="22" rx="2" ry="3.5" fill="#8D6E63" transform="rotate(-10 24 22)"/><ellipse cx="32" cy="22" rx="2" ry="3.5" fill="#8D6E63" transform="rotate(10 32 22)"/><ellipse cx="28" cy="27" rx="7" ry="5" fill="#BCAAA4"/><circle cx="25" cy="24" r="1.5" fill="#333"/><circle cx="31" cy="24" r="1.5" fill="#333"/><path d="M25 29 Q28 32 31 29" stroke="#8D6E63" stroke-width="1.5" fill="none"/><rect x="20" y="10" width="4" height="10" rx="2" fill="#F5C518"/><ellipse cx="22" cy="10" rx="4" ry="2" fill="#1A73E8"/></svg>
+      </div>
+      <div class="party-name-tag">CJP</div>
+      <div class="party-followers">14.9M followers</div>
+      <div class="party-vote-count" id="votes-cjp">0 votes</div>
+      <div class="mini-bar-wrap"><div class="mini-bar" id="bar-cjp" style="background:var(--cjp)"></div></div>
+    </div>
+    <div class="party-card congress" id="card-congress" onclick="selectParty('congress')">
+      <div class="selected-tick">✓</div>
+      <div class="party-logo-wrap">
+        <svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#1A237E"/><rect x="14" y="14" width="9" height="28" fill="#FF9933"/><rect x="23" y="14" width="10" height="28" fill="white"/><rect x="33" y="14" width="9" height="28" fill="#138808"/><circle cx="28" cy="28" r="7" fill="none" stroke="#000080" stroke-width="2"/><circle cx="28" cy="28" r="2" fill="#000080"/><line x1="28" y1="21" x2="28" y2="35" stroke="#000080" stroke-width="1"/><line x1="21" y1="28" x2="35" y2="28" stroke="#000080" stroke-width="1"/><line x1="23" y1="23" x2="33" y2="33" stroke="#000080" stroke-width="1"/><line x1="33" y1="23" x2="23" y2="33" stroke="#000080" stroke-width="1"/></svg>
+      </div>
+      <div class="party-name-tag">Congress</div>
+      <div class="party-followers">13.3M followers</div>
+      <div class="party-vote-count" id="votes-congress">0 votes</div>
+      <div class="mini-bar-wrap"><div class="mini-bar" id="bar-congress" style="background:#3F51B5"></div></div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK FORM -->
+  <div class="form-card">
+    <label>Your Opinion — अपनी राय लिखें</label>
+    <textarea class="opinion-input" id="opinion" placeholder="अपनी सोच शेयर करें... / Share what you think..."></textarea>
+    <label class="rating-label">How confident are you?</label>
+    <div class="stars-row" id="stars-row">
+      <button class="star-btn" onclick="setRating(1)">⭐</button>
+      <button class="star-btn" onclick="setRating(2)">⭐</button>
+      <button class="star-btn" onclick="setRating(3)">⭐</button>
+      <button class="star-btn" onclick="setRating(4)">⭐</button>
+      <button class="star-btn" onclick="setRating(5)">⭐</button>
+    </div>
+  </div>
+
+  <!-- VOTE BUTTON -->
+  <div class="actions-row">
+    <button class="btn-vote" id="vote-btn" onclick="castVote()">🗳️ Vote &amp; Earn 10 pts</button>
+  </div>
+
+  <!-- POINTS BANNER -->
+  <div class="points-banner" id="points-banner">
+    <div class="points-badge" id="pts-label">+10 pts</div>
+    <div id="pts-msg">Vote recorded! Share on social media to earn 5 more points.</div>
+  </div>
+
+  <!-- ========== SHARE PANEL ========== -->
+  <div class="share-section">
+    <div class="share-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share &amp; Earn +5 Points — शेयर करें
+    </div>
+    <div class="share-subtitle">अपनी राय दोस्तों के साथ शेयर करें / Spread the word on any platform</div>
+
+    <!-- LINK BOX -->
+    <div class="link-box">
+      <input class="link-input" type="text" id="share-link-input" readonly value="Vote करें और शेयर करें! → अभी लिंक जनरेट करें"/>
+      <button class="btn-copy" id="copy-btn" onclick="copyLink()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Link
+      </button>
+    </div>
+
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-grid">
+      <button class="btn-social btn-wa" onclick="shareOn('whatsapp')">
+        <div class="s-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.523 5.858L0 24l6.335-1.502A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.81 9.81 0 0 1-5.002-1.366l-.359-.214-3.761.892.946-3.659-.234-.374A9.817 9.817 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        </div>
+        <div class="s-label"><span>WhatsApp</span><span>+5 pts</span></div>
+      </button>
+      <button class="btn-social btn-fb" onclick="shareOn('facebook')">
+        <div class="s-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div class="s-label"><span>Facebook</span><span>+5 pts</span></div>
+      </button>
+      <button class="btn-social btn-tw" onclick="shareOn('twitter')">
+        <div class="s-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div class="s-label"><span>X (Twitter)</span><span>+5 pts</span></div>
+      </button>
+      <button class="btn-social btn-tg" onclick="shareOn('telegram')">
+        <div class="s-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </div>
+        <div class="s-label"><span>Telegram</span><span>+5 pts</span></div>
+      </button>
+    </div>
+
+    <div class="or-row"><span>or use device share</span></div>
+
+    <div class="social-grid">
+      <button class="btn-social btn-native" onclick="nativeShare()" id="native-share-btn" style="display:none">
+        <div class="s-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <div class="s-label"><span>Share via Phone / Apps</span><span>Opens your device share menu</span></div>
+      </button>
+    </div>
+
+    <div class="or-row"><span>Download this poll</span></div>
+
+    <div class="social-grid">
+      <button class="btn-social btn-wa" onclick="downloadAndShareHTML()" style="grid-column:1/-1">
+        <div class="s-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.523 5.858L0 24l6.335-1.502A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.81 9.81 0 0 1-5.002-1.366l-.359-.214-3.761.892.946-3.659-.234-.374A9.817 9.817 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        </div>
+        <div class="s-label"><span>📥 Download &amp; Share to WhatsApp</span><span>Get a direct download link</span></div>
+      </button>
+    </div>
+  </div>
+  <!-- ========== END SHARE PANEL ========== -->
+
+  <hr class="divider"/>
+
+  <!-- LIVE RESULTS -->
+  <div class="section-label"><span class="live-dot"></span>Live Results — लाइव परिणाम</div>
+  <div class="results-card">
+    <div class="result-row">
+      <div class="result-party-dot" style="background:var(--bjp)"></div>
+      <div class="result-party-name">BJP</div>
+      <div class="result-track"><div class="result-fill" id="res-bjp" style="background:var(--bjp)"></div></div>
+      <div class="result-pct" id="pct-bjp">0%</div>
+    </div>
+    <div class="result-row">
+      <div class="result-party-dot" style="background:#4CAF50"></div>
+      <div class="result-party-name">CJP</div>
+      <div class="result-track"><div class="result-fill" id="res-cjp" style="background:#4CAF50"></div></div>
+      <div class="result-pct" id="pct-cjp">0%</div>
+    </div>
+    <div class="result-row">
+      <div class="result-party-dot" style="background:#5C6BC0"></div>
+      <div class="result-party-name">Congress</div>
+      <div class="result-track"><div class="result-fill" id="res-congress" style="background:#5C6BC0"></div></div>
+      <div class="result-pct" id="pct-congress">0%</div>
+    </div>
+  </div>
+
+  <div class="footer-stats">
+    <span>Total Votes: <strong id="total-votes">0</strong></span>
+    <span>|</span>
+    <span>Your Points: <strong id="footer-pts">0</strong> ⭐</span>
+  </div>
+
+  <hr class="divider"/>
+  <div class="watermark">Powered by AI · लल्लूराम.com · Share &amp; Earn Points</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Starfield
+(function(){
+  const c=document.getElementById('stars-bg');
+  for(let i=0;i<80;i++){
+    const s=document.createElement('span');
+    s.style.left=Math.random()*100+'%';
+    s.style.top=Math.random()*100+'%';
+    s.style.setProperty('--dur',(2+Math.random()*4)+'s');
+    s.style.setProperty('--op',(0.2+Math.random()*0.6).toFixed(2));
+    s.style.animationDelay=(Math.random()*4)+'s';
+    const sz=1+Math.random()*2;
+    s.style.width=sz+'px';s.style.height=sz+'px';
+    c.appendChild(s);
+  }
+})();
+
+// Native share button
+if(navigator.share){
+  document.getElementById('native-share-btn').style.display='flex';
+}
+
+// State
+let selected=null,rating=0,myPoints=0,hasVoted=false;
+let votes={bjp:0,cjp:0,congress:0};
+
+try{
+  const d=JSON.parse(localStorage.getItem('ppoll_v3')||'null');
+  if(d){votes=d.votes||votes;myPoints=d.points||0;hasVoted=!!d.voted;if(d.selected){selected=d.selected;applySelection(selected)}}
+}catch(e){}
+
+function save(){
+  try{localStorage.setItem('ppoll_v3',JSON.stringify({votes,points:myPoints,voted:hasVoted,selected}))}catch(e){}
+}
+
+function selectParty(p){
+  if(hasVoted){showToast('You already voted! ✅');return}
+  selected=p;applySelection(p);
+}
+
+function applySelection(p){
+  const colors={bjp:'#FF6B00',cjp:'#1B5E20',congress:'#1A237E'};
+  ['bjp','cjp','congress'].forEach(k=>{
+    document.getElementById('card-'+k).classList.toggle('selected',k===p);
+  });
+  if(p){document.getElementById('vote-btn').style.background='linear-gradient(135deg,'+colors[p]+','+colors[p]+'cc)'}
+}
+
+function setRating(n){
+  rating=n;
+  document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('lit',i<n));
+}
+
+function updateUI(){
+  const total=votes.bjp+votes.cjp+votes.congress;
+  document.getElementById('total-votes').textContent=total;
+  document.getElementById('my-points').textContent=myPoints;
+  document.getElementById('footer-pts').textContent=myPoints;
+  ['bjp','cjp','congress'].forEach(k=>{
+    const v=votes[k],pct=total>0?Math.round(v/total*100):0;
+    document.getElementById('votes-'+k).textContent=v+' vote'+(v!==1?'s':'');
+    document.getElementById('bar-'+k).style.width=pct+'%';
+    document.getElementById('res-'+k).style.width=pct+'%';
+    document.getElementById('pct-'+k).textContent=pct+'%';
+  });
+}
+
+function castVote(){
+  if(!selected){showToast('Please select a party first! 👆');return}
+  if(hasVoted){showToast('Already voted! Share to earn +5 pts 🤝');return}
+  votes[selected]++;myPoints+=10;hasVoted=true;
+  save();updateUI();
+  const b=document.getElementById('points-banner');b.classList.add('show');
+  document.getElementById('pts-label').textContent='+10 pts';
+  document.getElementById('pts-msg').textContent='Vote recorded! Share on social media to earn 5 more points.';
+  document.getElementById('vote-btn').classList.add('voted');
+  document.getElementById('vote-btn').textContent='✅ Voted!';
+  showToast('Vote cast! You earned 10 points 🎉');
+  updateShareLink();
+}
+
+// ===== SHARE FUNCTIONS =====
+function buildShareMessage(){
+  const names={bjp:'BJP 🟠',cjp:'CJP 🟢',congress:'Congress 🔵'};
+  const total=votes.bjp+votes.cjp+votes.congress;
+  const opinion=(document.getElementById('opinion').value||'').trim();
+  const stars=rating>0?'⭐'.repeat(rating):'';
+  let msg='🗳️ जनता की राय — People\'s Poll\n\n';
+  if(selected){msg+='मैंने '+names[selected]+' को vote दिया!'+(stars?' '+stars:'')+'\n';}
+  if(opinion){msg+='💬 "'+opinion+'"\n';}
+  msg+='\n📊 Live Results ('+total+' votes):\n';
+  msg+='🟠 BJP: '+(total>0?Math.round(votes.bjp/total*100):0)+'%\n';
+  msg+='🟢 CJP: '+(total>0?Math.round(votes.cjp/total*100):0)+'%\n';
+  msg+='🔵 Congress: '+(total>0?Math.round(votes.congress/total*100):0)+'%\n\n';
+  msg+='👉 Vote करें और अपनी राय शेयर करें!\n';
+  msg+='#JantaKiRaay #PeoplesPoll #BJP #Congress #CJP';
+  return msg;
+}
+
+function getPageURL(){
+  return "https://yourdomain.com/poll";
+}
+
+function updateShareLink(){
+  const url=getPageURL();
+  document.getElementById('share-link-input').value=url;
+}
+
+function addSharePoints(){
+  myPoints+=5;save();updateUI();
+  const b=document.getElementById('points-banner');b.classList.add('show');
+  document.getElementById('pts-label').textContent='+5 pts';
+  document.getElementById('pts-msg').textContent='Thanks for sharing! You earned 5 bonus points.';
+}
+
+function shareOn(platform){
+  const msg=buildShareMessage();
+  const shareUrl=getPageURL();
+  const encodedUrl=encodeURIComponent(shareUrl);
+  const encodedText=encodeURIComponent(msg);
+
+  let url='';
+
+  switch(platform){
+    case 'whatsapp':
+      url=`https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`;
+      break;
+    case 'facebook':
+      url=`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+      break;
+    case 'twitter':
+      url=`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+      break;
+    case 'telegram':
+      url=`https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+      break;
+  }
+
+  if(url){
+    window.location.href=url;
+    addSharePoints();
+    showToast('+5 points! Thanks for sharing 🎉');
+  }
+}
+
+function nativeShare(){
+  if(navigator.share){
+    const msg=buildShareMessage();
+    navigator.share({
+      title:'जनता की राय — People\'s Poll',
+      text:msg,
+      url:getPageURL()
+    }).then(()=>{
+      addSharePoints();
+      showToast('+5 points for sharing! 🎉');
+    }).catch(()=>{});
+  }
+}
+
+function copyLink(){
+  const url=getPageURL();
+  const btn=document.getElementById('copy-btn');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>{
+      btn.classList.add('copied');
+      btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      showToast('Link copied to clipboard! 📋');
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Link';
+      },2500);
+    }).catch(()=>fallbackCopy(url,btn));
+  } else {
+    fallbackCopy(url,btn);
+  }
+}
+
+function fallbackCopy(text,btn){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');showToast('Link copied! 📋');}catch(e){showToast('Copy this link: '+text);}
+  document.body.removeChild(ta);
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// DOWNLOAD & SHARE HTML FILE
+function downloadAndShareHTML(){
+  const htmlContent=document.documentElement.outerHTML;
+  const blob=new Blob([htmlContent],{type:'text/html;charset=utf-8'});
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(blob);
+  link.download='Janata_Ki_Raay_Poll.html';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
+  
+  showToast('📥 Poll downloaded! Share the file on WhatsApp 📱');
+  addSharePoints();
+  
+  // Open WhatsApp with message
+  const msg=encodeURIComponent('🗳️ Janata Ki Raay - Peoples Poll!\n\nI downloaded an amazing interactive poll! Vote for your favorite party and share your opinion.\n\n#JantaKiRaay #PeoplesPoll');
+  setTimeout(()=>{
+    window.open('https://api.whatsapp.com/send?text='+msg,'_blank');
+  },800);
+}
+
+// ===== MOBILE OPTIMIZATIONS =====
+// Prevent zoom on input focus (iOS)
+document.addEventListener('touchmove',function(e){
+  if(e.target.closest('input, textarea, select')){return}
+},false);
+
+// Improve touch responsiveness
+document.querySelectorAll('button, .btn-social, .party-card').forEach(el=>{
+  el.addEventListener('touchstart',function(){
+    this.style.opacity='0.85';
+  });
+  el.addEventListener('touchend',function(){
+    this.style.opacity='1';
+  });
+});
+
+// Disable double-tap zoom
+let lastTouchEnd=0;
+document.addEventListener('touchend',function(e){
+  const now=Date.now();
+  if(now-lastTouchEnd<=300){
+    e.preventDefault();
+  }
+  lastTouchEnd=now;
+},false);
+
+updateUI();
+updateShareLink();
+</script>
+</body>
+</html>
